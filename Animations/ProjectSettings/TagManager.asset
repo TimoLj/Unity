@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Log
+  - PlayAble
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Player : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class Player : MonoBehaviour
     public Vector3 matchTarget = Vector3.zero;
     private CharacterController charactorController;
     public GameObject Log = null;
+    public Transform rightHand;
+    public Transform LeftHand;
+    public PlayableDirector director;
 
 
 
@@ -50,7 +54,6 @@ public class Player : MonoBehaviour
         {
             charactorController.enabled = false;
         }
-        print(anim.GetFloat(colliderID));
     }
 
     private void ProcessVault(){
@@ -112,6 +115,11 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             CarryLog();
         }
+
+        if(other.tag == "PlayAble")
+        {
+            director.Play();
+        }
     }
 
 
@@ -121,4 +129,21 @@ public class Player : MonoBehaviour
         anim.SetBool(isHoldLogID, true);
     }
 
+
+    private void OnAnimatorIK(int layerIndex)
+    {
+        //print(layerIndex);
+        if(layerIndex == 1)
+        {
+            int weight = anim.GetBool(isHoldLogID) ? 1 : 0;
+            anim.SetIKPosition(AvatarIKGoal.LeftHand, LeftHand.position);
+            anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, weight);
+            anim.SetIKRotation(AvatarIKGoal.LeftHand, LeftHand.rotation);
+            anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, weight);
+            anim.SetIKPosition(AvatarIKGoal.RightHand, rightHand.position);
+            anim.SetIKPositionWeight(AvatarIKGoal.RightHand, weight);
+            anim.SetIKRotation(AvatarIKGoal.RightHand, rightHand.rotation);
+            anim.SetIKRotationWeight(AvatarIKGoal.RightHand, weight);
+        }
+    }
 }
