@@ -60,11 +60,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Cube.cs" />
     <Compile Include="Assets\Scripts\API01EventFunc.cs" />
     <Compile Include="Assets\Scripts\API02Time.cs" />
     <Compile Include="Assets\Scripts\API03GameObject.cs" />
     <Compile Include="Assets\Scripts\API04Message.cs" />
+    <Compile Include="Assets\Scripts\API07Invoke.cs" />
+    <Compile Include="Assets\Scripts\API08Coroutinel.cs" />
+    <Compile Include="Assets\Scripts\API09OnMouseEvent.cs" />
+    <Compile Include="Assets\Scripts\API10Lerp.cs" />
+    <Compile Include="Assets\Scripts\Cube.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/18896/Desktop/GitHub/Unity/API/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
